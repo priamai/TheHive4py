@@ -726,7 +726,7 @@ class AlertArtifact(JSONSerializable):
         return self
     
     def __key(self):
-        return (self.dataType, self.message)
+        return (self.dataType, self.data, self.message)
         
     
     def __eq__(self, other):
