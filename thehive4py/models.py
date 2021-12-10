@@ -724,4 +724,17 @@ class AlertArtifact(JSONSerializable):
             self.data = "{};{};{}".format(filename, mime, encoded_string.decode())
 
         return self
+    
+    def __key(self):
+        return (self.dataType, self.message)
+        
+    
+    def __eq__(self, other):
+        if not isinstance(other, AlertArtifact):
+            return NotImplemented
+        
+        return self.__key() == other.__key()
+    
+    def __hash__(self):
+        return hash(self.__key())
 
